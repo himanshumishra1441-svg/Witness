@@ -13,6 +13,7 @@ from services.loan_service import (create_loan as create_loan_service,
                                    fetch_credit_score as fetch_credit_score_service)
 from repositories.projection_repository import (get_credit_score_and_income, get_risk, get_projection)
 from repositories.event_repository import save_event, get_events, decision_already_exists
+from repositories.outbox_repository import save_outbox_message
 from projections.rebuild_projections import rebuild_projections
 from fastapi import FastAPI
 from services.event_service import get_loan_history_service
@@ -102,6 +103,13 @@ def make_decision_route(loan_id: str):
                 str(uuid4())
             )
 
+            save_outbox_message(
+                str(uuid4()),
+                "LoanApproved",
+                loan_id,
+                json.dumps({"approved_by": "system"})
+            )
+
         else:
 
             save_event(
@@ -110,6 +118,13 @@ def make_decision_route(loan_id: str):
                 "LoanRejected",
                 json.dumps({"rejected_by": "system"}),
                 str(uuid4())
+            )
+
+            save_outbox_message(
+                str(uuid4()),
+                "LoanRejected",
+                loan_id,
+                json.dumps({"rejected_by": "system"})
             )
 
 

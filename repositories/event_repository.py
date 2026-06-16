@@ -71,3 +71,20 @@ def decision_already_exists(loan_id):
         ).fetchone()
 
         return row is not None
+    
+def get_event_count(loan_id):
+
+    with engine.connect() as conn:
+
+        count = conn.execute(
+            text("""
+                SELECT COUNT(*)
+                FROM events
+                WHERE aggregate_id = :loan_id
+            """),
+            {
+                "loan_id": loan_id
+            }
+        ).scalar()
+
+        return count

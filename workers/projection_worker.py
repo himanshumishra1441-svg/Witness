@@ -4,6 +4,8 @@ from sqlalchemy import text
 from database import engine
 from repositories.projection_repository import (create_loan_projection, update_credit_score, 
                                                 update_monthly_income, update_status, update_risk)
+from repositories.event_repository import get_event_count
+from services.snapshot_service import create_snapshot
 from repositories.dashboard_repository import increment_approved, increment_rejected, increment_high_risk, increment_low_risk
 from repositories.statistics_repository import (increment_total_loans, increment_approved_loans, increment_rejected_loans)
 import time
@@ -156,6 +158,16 @@ def run_projection_worker():
                 increment_rejected_loans()
 
             print(event_type)
+
+            event_count = get_event_count(loan_id)
+
+            if event_count % 5 == 0:
+
+                print(
+                    f"Creating snapshot for loan {loan_id}"
+                )
+
+                create_snapshot(loan_id)
 
         if last_event_id:
 
