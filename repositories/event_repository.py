@@ -3,7 +3,7 @@ from database import engine
 
 def save_event(event_id, aggregate_id, event_type, payload, request_id):
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
         conn.execute(
             text("""
             INSERT INTO events
@@ -19,7 +19,23 @@ def save_event(event_id, aggregate_id, event_type, payload, request_id):
                 "request_id": request_id
             }
         )
-        conn.commit()
+
+        conn.execute(
+            text("""
+                INSERT INTO outbox
+                (id, event_type, aggregate_id, payload, processed)
+                VALUES
+                (:id, :event_type, :aggregate_id, :payload, FALSE)
+                """),
+                {
+                    "id": event_id,
+                    "event_type": event_type,
+                    "aggregate_id": aggregate_id,
+                    "payload": payload
+                }
+
+        )    
+        
 
 def get_events(loan_id):
 

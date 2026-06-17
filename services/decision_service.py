@@ -6,7 +6,7 @@ from repositories.event_repository import (
     save_event,
     decision_already_exists
 )
-from repositories.outbox_repository import save_outbox_message
+
 
 def make_decision(risk):
     if risk == "Low Risk":
@@ -46,18 +46,7 @@ def make_decision_for_loan(loan_id: str):
             str(uuid4())
         )
 
-        save_outbox_message(
-            str(uuid4()),
-            "LoanApproved",
-            loan_id,
-            json.dumps(
-                {
-                    "approved_by": "system"
-                }
-            )
-        )
-
-        return "Approved"
+        
 
     else:
 
@@ -73,15 +62,4 @@ def make_decision_for_loan(loan_id: str):
             str(uuid4())
         )
 
-        save_outbox_message(
-            str(uuid4()),
-            "LoanRejected",
-            loan_id,
-            json.dumps(
-                {
-                    "rejected_by": "system"
-                }
-            )
-        )
-
-        return "Rejected"
+        

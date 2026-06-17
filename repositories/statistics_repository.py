@@ -4,7 +4,7 @@ from database import engine
 
 def increment_total_loans():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -14,12 +14,12 @@ def increment_total_loans():
             """)
         )
 
-        conn.commit()
+       
 
 
 def increment_approved_loans():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -29,12 +29,11 @@ def increment_approved_loans():
             """)
         )
 
-        conn.commit()
-
+  
 
 def increment_rejected_loans():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -44,7 +43,7 @@ def increment_rejected_loans():
             """)
         )
 
-        conn.commit()
+        
 
 def get_statistics():
 

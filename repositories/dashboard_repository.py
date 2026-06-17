@@ -20,7 +20,7 @@ def get_dashboard():
     
 def increment_approved():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -30,10 +30,10 @@ def increment_approved():
             """)
         )
 
-        conn.commit()
+        
 
 def increment_rejected():
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -43,11 +43,9 @@ def increment_rejected():
             """)
         )
 
-        conn.commit()
-
 def increment_low_risk():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -57,11 +55,11 @@ def increment_low_risk():
             """)
         )
 
-        conn.commit()
+    
 
 def increment_high_risk():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
                 text("""
@@ -71,4 +69,4 @@ def increment_high_risk():
                 """)
             )
         
-        conn.commit()
+    

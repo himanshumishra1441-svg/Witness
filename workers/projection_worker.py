@@ -15,7 +15,7 @@ def run_projection_worker():
 
     print("Projection worker started")
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         checkpoint = conn.execute(
             text("""
@@ -182,7 +182,7 @@ def run_projection_worker():
                 }
             )
 
-            conn.commit()
+        
 
             print("Checkpoint updated:", last_event_id)
 

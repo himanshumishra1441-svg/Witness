@@ -21,7 +21,7 @@ def get_projection(loan_id):
 
 def update_credit_score(loan_id, credit_score):
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -35,10 +35,10 @@ def update_credit_score(loan_id, credit_score):
             }
         )
 
-        conn.commit()
+    
 
 def update_monthly_income(loan_id, monthly_income):
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -52,10 +52,10 @@ def update_monthly_income(loan_id, monthly_income):
             }
         )
 
-        conn.commit()
+    
 
 def update_status(loan_id, status):
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -68,10 +68,10 @@ def update_status(loan_id, status):
                 "loan_id": loan_id
             }
         )
-        conn.commit()
+    
 
 def update_risk(loan_id, risk):
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -84,7 +84,7 @@ def update_risk(loan_id, risk):
                 "loan_id": loan_id
             }
         )
-        conn.commit()
+    
 
 def get_risk(loan_id):
 
@@ -115,7 +115,7 @@ def get_credit_score_and_income(loan_id):
 
 def create_loan_projection(loan_id, status):
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         conn.execute(
             text("""
@@ -138,5 +138,5 @@ def create_loan_projection(loan_id, status):
             }
         )
 
-        conn.commit()
+        
 

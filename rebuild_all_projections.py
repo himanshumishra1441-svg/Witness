@@ -3,7 +3,7 @@ from database import engine
 
 def rebuild():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         print("Clearing loan projection...")
 
@@ -35,7 +35,7 @@ def rebuild():
             """)
         )
 
-        conn.commit()
+    
 
         print("Done")
 

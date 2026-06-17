@@ -4,14 +4,14 @@ from database import engine
 
 def rebuild_projections():
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         
         conn.execute(
             text("DELETE FROM loan_projection")
         )
 
-        conn.commit()
+    
 
         rows = conn.execute(
             text("""
@@ -86,7 +86,7 @@ def rebuild_projections():
                 }
             )
 
-            conn.commit()
+        
 
     return {
         "message": "Projections rebuilt successfully"

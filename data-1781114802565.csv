@@ -1,0 +1,6 @@
+"id","aggregate_id","event_type","payload","created_at","request_id"
+"6db3d46d-3939-4621-9183-daf945912872","ebb2f640-4b6e-477d-9d6e-5b5600469f3f","LoanApplied","{""amount"": 100000}","2026-06-10 20:29:47.179068",NULL
+"6358bfd0-03a4-46a0-83a3-4544f546c792","52e79e3d-51d1-41ff-9cea-75963bca629c","LoanApplied","{""amount"": 100000}","2026-06-10 22:19:00.943271","395dd549-c459-4cc6-ac1d-ae5941b1814d"
+"71d0314d-a144-4a6f-89bd-15adb2a09d2b","b1d2ed2c-c090-4c79-8165-0582b79557ce","LoanApplied","{""amount"": 100000}","2026-06-10 22:19:09.326325","89f18fd0-6152-4f01-bbf4-fbc3bf40a422"
+"c4e15792-de0d-4603-b79c-0a0b7950f757","2e1a9400-f821-4771-bcc1-8a8864a9538e","LoanApplied","{""amount"": 100000}","2026-06-10 22:19:11.341741","656d19c5-c140-47e9-9fda-02b7c0beee50"
+"2a93f436-e39b-45da-9c35-1614d4f79c16","f268c05e-0a11-4841-9d9d-2f1efa45c9d3","LoanApplied","{""amount"": 100000}","2026-06-10 23:23:15.668193","REQ-123"

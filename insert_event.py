@@ -8,7 +8,7 @@ engine = create_engine(DATABASE_URL)
 event_id = str(uuid4())
 loan_id = str(uuid4())
 
-with engine.connect() as conn:
+with engine.begin() as conn:
     conn.execute(
         text("""
         INSERT INTO events
@@ -23,6 +23,6 @@ with engine.connect() as conn:
             "payload": '{"amount":100000}'
         }
     )
-    conn.commit()
+    
 
 print("Event Inserted!")

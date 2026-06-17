@@ -10,7 +10,7 @@ def run_saga():
 
     print("Saga worker started")
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
 
         checkpoint = conn.execute(
             text("""
@@ -133,7 +133,7 @@ def run_saga():
                 }
             )
 
-            conn.commit()
+        
 
             print(
                 "Saga checkpoint updated:",
