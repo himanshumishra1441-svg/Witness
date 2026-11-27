@@ -1,0 +1,23 @@
+candidate:
+  name: "Himanshu Mishra"
+  email: "himanshumishra1441@gmail.com"
+  phone: "+91-9202736978"
+  current_location: "Indore, Madhya Pradesh, India"
+  relocation_available_from: "2027-01-01"
+  work_modes: [remote, hybrid, onsite]
+  minimum_monthly_in_hand_inr: 40000
+  target_roles: [Python Backend Engineer, Python Developer, Applied AI Engineer, Generative AI Engineer, AI Application Developer, Solutions Engineer, Implementation Engineer, Technical Consultant, API Integration Engineer]
+  education:
+    degree: "B.Tech Mechanical Engineering"
+    institution: "SGSITS, Indore"
+    graduation: "May 2025"
+    cgpa: "6.5/10.0"
+  skills:
+    programming: [Python, JavaScript]
+    backend: [FastAPI, REST APIs, Pydantic, Redis, SQLAlchemy]
+    databases: [PostgreSQL, SQLite, Pinecone, ChromaDB]
+    ai: [LangChain, LangGraph, CrewAI, RAG, NLP, LLMs, Sentence Transformers, Hugging Face Transformers, Hybrid Retrieval, Cross-Encoder Reranking]
+  preferences:
+    freshness_days: 7
+    minimum_match_score: 65
+    high_match_score: 80
